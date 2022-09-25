@@ -4,6 +4,16 @@ DinoQL takes inspiration from both REST and GraphQL, getting the best of both wo
 
 DinoQL is designed to be extensible, allowing you to add new data types and metadata without needing to modify the core code.
 
+- [Schema](#schema)
+	- [Scalars](#scalars)
+	- [Enums](#enums)
+	- [Interfaces](#interfaces)
+	- [Resources](#resources)
+		- [Properties](#properties)
+		- [Queries](#queries)
+		- [Actions](#actions)
+- [Documentation](#documentation)
+
 # Schema
 
 A DinoQL schema is made up of a set of scalars, enums, interfaces, and resources.
@@ -12,7 +22,7 @@ Identifiers for scalars, interfaces, resources, properties, queries, and actions
 
 ## Scalars
 
-DinoQL incudes a few default scalar types, but you can add your own with fallback types in case a consumer doesn't have a generator for a specific type.
+DinoQL incudes a few default scalar types, but you can add your own with fallback types in case a consumer of your schema doesn't have a generator for a specific type.
 
 The built in types are:
 
@@ -21,7 +31,7 @@ The built in types are:
 - float
 - boolean
 
-These can be extended to include more types, with any new types beign able to specify a fallback type. For example, if you wanted to add a new type called `DateTime`, you could add it to the schema like so:
+These can be extended to include more types, with any new types being able to specify a fallback type. For example, if you wanted to add a new type called `DateTime`, you could add it to the schema like so:
 
 ```
 scalar DateTime string;
@@ -177,3 +187,28 @@ resource User {
 	action update(options: UpdateUserOptions): User;
 }
 ```
+
+# Documentation
+
+You can add documentation to your schema using doc comments.
+
+```
+/* A user within the app */
+resource User {
+	#id: int;
+
+	/* The user's name, used to log in and the default display name */
+	name: string;
+
+	/* The user's nickname that they have set, otherwise it falls back to their name */
+	nickname?: string;
+
+	/* The user's role within the app */
+	role: UserRole;
+
+	/* The user's metadata */
+	meta: UserMeta;
+}
+```
+
+Doc comments can be placed on enums, interfaces, resources, properties, queries, actions, and parameters.
