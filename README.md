@@ -18,7 +18,7 @@ I've created a fairly simple implementation of a generic DinoQL server in TypeSc
 
 ## What's the status of DinoQL?
 
-DinoQL is still in the early stages of development. I'm not super familiar with writing grammars for languages right now, so I'm working on paring it down to a simpler format (and potentially moving away from antlr4). In terms of planned things to add to the standard, the next two major things are:
+DinoQL is still in the early stages of development. I'm not super familiar with writing grammars for languages right now, so I'm working on paring it down to a simpler format. In terms of planned things to add to the standard, the next two major things are:
 
 - Adding support for unions
 - Decorators for providing metadata about resources, queries, actions, and fields
